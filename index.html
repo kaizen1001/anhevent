@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Kho Ảnh Kỷ Niệm 20/11 - THPT Chê Ghê-va-ra | Kaizen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at top right, #1e293b, #0f172a 60%, #090d16);
+      color: #f8fafc;
+      min-height: 100vh;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      overflow-x: hidden;
+    }
+    .font-serif-display {
+      font-family: 'Playfair Display', serif;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(251, 191, 36, 0.22);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.45);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -5px rgba(245, 158, 11, 0.65);
+    }
+    .role-option input:checked + div {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.16);
+      box-shadow: 0 0 0 1px #f59e0b;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center p-4 sm:p-6 relative">
+
+  <!-- Hiệu ứng ánh sáng nền -->
+  <div class="fixed top-[-10%] left-[-10%] w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- ================= BƯỚC 1: CỔNG CHÀO MỪNG & XÁC NHẬN ================= -->
+  <main id="welcome-gate" class="w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 z-10 transition-all duration-500">
+    <div class="text-center mb-6">
+      <span class="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-amber-500/15 text-amber-300 border border-amber-400/30 mb-3">
+        Chào Mừng Ngày Nhà Giáo Việt Nam 20/11
+      </span>
+      <h1 class="font-serif-display text-2xl sm:text-3xl font-bold leading-snug gold-gradient-text">
+        THPT Chê Ghê-va-ra
+      </h1>
+      <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+        Kho lưu trữ khoảnh khắc tri ân Thầy Cô. Vui lòng chọn đối tượng bên dưới để mở khóa album ảnh chất lượng cao.
+      </p>
+    </div>
+
+    <form id="verify-form" class="space-y-4">
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-amber-300/90 mb-2">
+          1. Bạn là ai tại CGVR? *
+        </label>
+        <div class="grid grid-cols-2 gap-2.5">
+          <label class="role-option cursor-pointer">
+            <input type="radio" name="role" value="Giáo viên / Cán bộ" class="hidden" required />
+            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
+              <div class="text-xl mb-1">👩‍🏫</div>
+              <div class="text-xs sm:text-sm font-semibold text-slate-100">Giáo viên</div>
+            </div>
+          </label>
+
+          <label class="role-option cursor-pointer">
+            <input type="radio" name="role" value="Học sinh CGVR" class="hidden" />
+            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
+              <div class="text-xl mb-1">🎓</div>
+              <div class="text-xs sm:text-sm font-semibold text-slate-100">Học sinh</div>
+            </div>
+          </label>
+
+          <label class="role-option cursor-pointer">
+            <input type="radio" name="role" value="Cựu học sinh" class="hidden" />
+            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
+              <div class="text-xl mb-1">🎒</div>
+              <div class="text-xs sm:text-sm font-semibold text-slate-100">Cựu học sinh</div>
+            </div>
+          </label>
+
+          <label class="role-option cursor-pointer">
+            <input type="radio" name="role" value="Khách mời / Phụ huynh" class="hidden" />
+            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
+              <div class="text-xl mb-1">✨</div>
+              <div class="text-xs sm:text-sm font-semibold text-slate-100">Khách / Phụ huynh</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Ô nhập tên (Tự động ẩn nếu chọn Giáo viên) -->
+      <div id="name-input-container" class="transition-all duration-300">
+        <label for="visitor-name" class="block text-xs font-semibold uppercase tracking-wider text-amber-300/90 mb-1.5">
+          2. Họ và tên (hoặc Lớp) *
+        </label>
+        <input
+          type="text"
+          id="visitor-name"
+          required
+          placeholder="VD: Nguyễn Văn A - 12A1..."
+          class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition"
+        />
+      </div>
+
+      <button
+        type="submit"
+        id="submit-btn"
+        class="w-full btn-gold text-slate-950 font-bold py-3.5 rounded-xl text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 mt-2 cursor-pointer"
+      >
+        <span>Mở Kho Ảnh 20/11 Ngay</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </button>
+    </form>
+
+    <div class="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
+      <span>📸 Cameraman: <strong class="text-amber-300">Kim Tuấn An (Kaizen)</strong></span>
+      <span>20/11 CGVR</span>
+    </div>
+  </main>
+
+  <!-- ================= BƯỚC 2: TRANG KHO ẢNH & MÃ QR ỦNG HỘ ================= -->
+  <section id="gallery-portal" class="hidden w-full max-w-4xl space-y-6 z-10">
+    <!-- Header chào mừng cá nhân hóa -->
+    <div class="glass-card rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-medium mb-3">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span id="greeting-badge">Đã xác nhận truy cập</span>
+      </div>
+      <h2 class="font-serif-display text-2xl sm:text-4xl font-bold gold-gradient-text">
+        Kỷ Niệm 20/11 — THPT Chê Ghê-va-ra
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-xl mx-auto">
+        Cảm ơn đã ghé thăm! Toàn bộ ảnh gốc sắc nét được thực hiện bởi
+        <span class="text-amber-300 font-semibold">Cameraman: Kim Tuấn An (Kaizen)</span>.
+      </p>
+
+      <!-- Khu vực nút mở Drive & Trình xem nhúng (chống lộ link thanh địa chỉ) -->
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <button
+          onclick="openProtectedDrive()"
+          class="w-full sm:w-auto btn-gold text-slate-950 font-bold px-7 py-3.5 rounded-xl text-sm sm:text-base flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5L7.71 3.5zm1.72 0l6.56 11.5h6.86L16.29 3.5H9.43zm6.28 12.5H2.57l3.43 5h13.14l-3.43-5z"/>
+          </svg>
+          <span>Xem & Tải Ảnh Trên Google Drive</span>
+        </button>
+      </div>
+
+      <!-- Khung nhúng Drive trực tiếp (giấu thanh URL gốc của Google Drive) -->
+      <div id="embedded-drive-box" class="hidden mt-6 rounded-2xl overflow-hidden border border-amber-400/30 bg-slate-900">
+        <div class="bg-slate-800/90 px-4 py-2.5 flex items-center justify-between text-xs text-slate-300 border-b border-slate-700">
+          <span>📁 Thư mục ảnh gốc 20/11 CGVR (Chế độ bảo vệ liên kết)</span>
+          <button onclick="closeEmbeddedDrive()" class="text-amber-400 hover:underline cursor-pointer">Thu gọn</button>
+        </div>
+        <iframe id="drive-iframe" src="" class="w-full h-[480px] border-0 bg-white"></iframe>
+      </div>
+    </div>
+
+    <!-- Thẻ Ủng hộ Cameraman (VietQR MB Bank không để sẵn tiền) -->
+    <div class="glass-card rounded-3xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+      <div class="md:col-span-7 space-y-3 text-center md:text-left">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-400/30">
+          ☕ Tiếp Lửa Đam Mê Nhiếp Ảnh
+        </span>
+        <h3 class="font-serif-display text-xl sm:text-2xl font-bold text-white">
+          Ủng Hộ Cameraman Kim Tuấn An (Kaizen)
+        </h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Toàn bộ ảnh 20/11 tại trường đều được chụp và chỉnh sửa hoàn toàn miễn phí. Nếu yêu thích những bức ảnh này, mọi người có thể quét mã QR bên cạnh để gửi một chút ủng hộ tùy tâm nhé!
+        </p>
+
+        <div class="bg-slate-900/75 border border-slate-700/80 rounded-2xl p-4 space-y-2 text-xs sm:text-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-400">Ngân hàng:</span>
+            <span class="font-semibold text-white">MB Bank (Quân Đội)</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-400">Chủ tài khoản:</span>
+            <span class="font-semibold text-amber-300">KIM TUAN AN</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-400">Số tài khoản:</span>
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-white">864810012222</span>
+              <button onclick="copySTK()" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-xs hover:bg-amber-500/30 transition cursor-pointer">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+            <span class="text-slate-400">Nội dung CK:</span>
+            <span class="font-mono font-semibold text-emerald-300">ủng hộ chup ảnh 20/11CGVR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mã QR MB Bank tự động điền nội dung, để trống số tiền -->
+      <div class="md:col-span-5 flex flex-col items-center justify-center">
+        <div class="bg-white p-3.5 rounded-2xl shadow-2xl animate-float max-w-[240px] w-full">
+          <img
+            src="https://img.vietqr.io/image/MB-864810012222-compact2.png?addInfo=UNG%20HO%20CHUP%20ANH%202011CGVR&accountName=KIM%20TUAN%20AN"
+            alt="QR MB Bank Ủng hộ chụp ảnh 20/11 CGVR"
+            class="w-full h-auto rounded-lg pointer-events-none"
+          />
+        </div>
+        <p class="text-[11px] text-slate-400 mt-2.5 text-center">
+          *Quét bằng App Ngân hàng hoặc MoMo (Số tiền tùy tâm)
+        </p>
+      </div>
+    </div>
+
+    <footer class="text-center text-xs text-slate-500 pb-4">
+      © 2026 THPT Chê Ghê-va-ra • Cameraman: <span class="text-slate-300 font-medium">Kim Tuấn An (Kaizen)</span>
+    </footer>
+  </section>
+
+  <!-- Toast thông báo -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-slate-800 border border-amber-400/50 text-white px-4 py-3 rounded-xl shadow-2xl text-xs sm:text-sm transform translate-y-20 opacity-0 transition-all duration-300 z-50"></div>
+
+  <script>
+    // ================= CẤU HÌNH CỦA BẠN =================
+    // 1. Dán ID thư mục Google Drive vào đây (VD: nếu link là https://drive.google.com/drive/folders/1AbCdEfGhIjK... thì ID là 1AbCdEfGhIjK...)
+    // Để trống "" nếu bạn chưa up ảnh xong.
+    const DRIVE_FOLDER_ID = "1pAe3ncsCNTBfmm5uJTyVxrTXI-LP_hbz?usp=sharing";
+
+    // 2. Dán link Web App Google Apps Script vào đây để nhận mail mỗi đủ 20 lượt truy cập
+    const GOOGLE_SCRIPT_URL = "";
+    // ====================================================
+
+    const welcomeGate = document.getElementById("welcome-gate");
+    const galleryPortal = document.getElementById("gallery-portal");
+    const verifyForm = document.getElementById("verify-form");
+    const greetingBadge = document.getElementById("greeting-badge");
+    const nameInputContainer = document.getElementById("name-input-container");
+    const visitorNameInput = document.getElementById("visitor-name");
+    const roleRadios = document.querySelectorAll('input[name="role"]');
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 3200);
+    }
+
+    // Ẩn/hiện ô nhập tên tùy theo vai trò (Giáo viên thì ẩn, các đối tượng khác bắt buộc nhập)
+    roleRadios.forEach((radio) => {
+      radio.addEventListener("change", function () {
+        if (this.value === "Giáo viên / Cán bộ") {
+          nameInputContainer.classList.add("hidden");
+          visitorNameInput.removeAttribute("required");
+          visitorNameInput.value = "";
+        } else {
+          nameInputContainer.classList.remove("hidden");
+          visitorNameInput.setAttribute("required", "true");
+        }
+      });
+    });
+
+    // Xử lý form chào mừng & gửi thống kê về Apps Script
+    verifyForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const roleEl = document.querySelector('input[name="role"]:checked');
+      if (!roleEl) {
+        showToast("⚠️ Vui lòng chọn vai trò của bạn!");
+        return;
+      }
+
+      const roleVal = roleEl.value;
+      const isTeacher = roleVal === "Giáo viên / Cán bộ";
+      const nameVal = visitorNameInput.value.trim();
+
+      if (!isTeacher && !nameVal) {
+        showToast("⚠️ Vui lòng nhập họ tên hoặc lớp của bạn!");
+        return;
+      }
+
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.innerHTML = `<span>Đang mở khóa kho ảnh...</span>`;
+
+      // Gửi dữ liệu truy cập ngầm về Google Apps Script (đủ 20 lượt tự gửi mail)
+      if (GOOGLE_SCRIPT_URL) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            role: roleVal,
+            name: isTeacher ? "Quý Thầy/Cô" : nameVal,
+            time: new Date().toLocaleString("vi-VN")
+          })
+        }).catch(() => {});
+      }
+
+      setTimeout(() => {
+        greetingBadge.textContent = isTeacher
+          ? "Kính chào Quý Thầy/Cô THPT Chê Ghê-va-ra"
+          : `Xin chào ${roleVal}: ${nameVal}`;
+        welcomeGate.classList.add("hidden");
+        galleryPortal.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 450);
+    });
+
+    // Mở kho ảnh Drive (Ưu tiên nhúng trực tiếp để giấu link trên thanh địa chỉ)
+    function openProtectedDrive() {
+      if (!DRIVE_FOLDER_ID || DRIVE_FOLDER_ID.trim() === "") {
+        showToast("📸 Album ảnh 20/11 đang được Kim Tuấn An (Kaizen) cập nhật, quay lại sau nhé!");
+        return;
+      }
+      const box = document.getElementById("embedded-drive-box");
+      const iframe = document.getElementById("drive-iframe");
+      iframe.src = `https://drive.google.com/embeddedfolderview?id=${DRIVE_FOLDER_ID.trim()}#grid`;
+      box.classList.remove("hidden");
+      box.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function closeEmbeddedDrive() {
+      document.getElementById("embedded-drive-box").classList.add("hidden");
+      document.getElementById("drive-iframe").src = "";
+    }
+
+    function copySTK() {
+      navigator.clipboard.writeText("864810012222");
+      showToast("✅ Đã sao chép STK MB Bank: 864810012222");
+    }
+
+    // Chặn chuột phải và các phím tắt xem mã nguồn cơ bản
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && ["U", "S"].includes(e.key.toUpperCase()))
+      ) {
+        e.preventDefault();
+        showToast("🔒 Chức năng này đã được khóa để bảo vệ bản quyền ảnh!");
+      }
+    });
+  </script>
+</body>
+</html>
