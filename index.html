@@ -3,260 +3,439 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Kho Ảnh Kỷ Niệm 20/11 - THPT Chê Ghê-va-ra | Kaizen</title>
+  <title>20/11 Archive — THPT Chê Ghê-va-ra | Kaizen Photography</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --gold-light: #fef08a;
+      --gold-mid: #eab308;
+      --gold-deep: #b45309;
+      --bg-obsidian: #06070a;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at top right, #1e293b, #0f172a 60%, #090d16);
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: var(--bg-obsidian);
       color: #f8fafc;
       min-height: 100vh;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
       overflow-x: hidden;
+      -webkit-user-select: none;
+      user-select: none;
     }
-    .font-serif-display {
+
+    .font-editorial {
       font-family: 'Playfair Display', serif;
     }
-    .glass-card {
-      background: rgba(30, 41, 59, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(251, 191, 36, 0.22);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+
+    /* Nền lưới kiến trúc mờ + ánh sáng studio */
+    .studio-bg {
+      background-image:
+        radial-gradient(circle at 18% 15%, rgba(234, 179, 8, 0.14) 0%, transparent 42%),
+        radial-gradient(circle at 85% 82%, rgba(217, 119, 6, 0.12) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
     }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+
+    /* Hiệu ứng hạt film nhiếp ảnh tinh tế */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Thẻ kính cao cấp có viền sáng cạnh trên */
+    .luxury-panel {
+      background: linear-gradient(165deg, rgba(22, 25, 34, 0.86) 0%, rgba(11, 13, 19, 0.94) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 25px 60px -15px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 0 rgba(254, 240, 138, 0.18);
+    }
+
+    .text-champagne {
+      background: linear-gradient(135deg, #fef9c3 0%, #facc15 45%, #d97706 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .btn-gold {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.45);
-      transition: all 0.25s ease;
+
+    /* Nút bấm vàng kim có hiệu ứng quét sáng */
+    .btn-champagne {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+      color: #090a0f;
+      box-shadow: 0 12px 30px -8px rgba(234, 179, 8, 0.5);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .btn-gold:hover {
+
+    .btn-champagne::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 3.5s infinite;
+    }
+
+    .btn-champagne:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px -5px rgba(245, 158, 11, 0.65);
+      box-shadow: 0 18px 36px -8px rgba(234, 179, 8, 0.7);
     }
-    .role-option input:checked + div {
-      border-color: #f59e0b;
-      background: rgba(245, 158, 11, 0.16);
-      box-shadow: 0 0 0 1px #f59e0b;
+
+    .btn-champagne:active {
+      transform: translateY(0);
     }
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      45%, 100% { left: 160%; }
     }
-    .animate-float {
-      animation: floatSlow 4s ease-in-out infinite;
+
+    /* Thẻ chọn đối tượng */
+    .role-card-input:checked + .role-card-box {
+      border-color: rgba(250, 204, 21, 0.75);
+      background: linear-gradient(145deg, rgba(234, 179, 8, 0.16), rgba(161, 98, 7, 0.08));
+      box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.25), inset 0 1px 0 rgba(254, 240, 138, 0.25);
+    }
+
+    .role-card-input:checked + .role-card-box .role-icon-wrap {
+      background: rgba(250, 204, 21, 0.2);
+      color: #fde047;
+      border-color: rgba(250, 204, 21, 0.4);
+    }
+
+    .role-card-input:checked + .role-card-box .check-dot {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Hiệu ứng tia quét QR */
+    @keyframes scanLine {
+      0%, 100% { top: 8%; opacity: 0.2; }
+      50% { top: 88%; opacity: 0.9; }
+    }
+    .qr-laser {
+      animation: scanLine 2.8s ease-in-out infinite;
+    }
+
+    /* Hiệu ứng xuất hiện mượt */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   </style>
 </head>
-<body class="flex flex-col items-center justify-center p-4 sm:p-6 relative">
+<body class="studio-bg flex flex-col justify-between min-h-screen relative">
+  <div class="film-grain"></div>
 
-  <!-- Hiệu ứng ánh sáng nền -->
-  <div class="fixed top-[-10%] left-[-10%] w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-  <!-- ================= BƯỚC 1: CỔNG CHÀO MỪNG & XÁC NHẬN ================= -->
-  <main id="welcome-gate" class="w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 z-10 transition-all duration-500">
-    <div class="text-center mb-6">
-      <span class="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-amber-500/15 text-amber-300 border border-amber-400/30 mb-3">
-        Chào Mừng Ngày Nhà Giáo Việt Nam 20/11
-      </span>
-      <h1 class="font-serif-display text-2xl sm:text-3xl font-bold leading-snug gold-gradient-text">
-        THPT Chê Ghê-va-ra
-      </h1>
-      <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-        Kho lưu trữ khoảnh khắc tri ân Thầy Cô. Vui lòng chọn đối tượng bên dưới để mở khóa album ảnh chất lượng cao.
-      </p>
-    </div>
-
-    <form id="verify-form" class="space-y-4">
-      <div>
-        <label class="block text-xs font-semibold uppercase tracking-wider text-amber-300/90 mb-2">
-          1. Bạn là ai tại CGVR? *
-        </label>
-        <div class="grid grid-cols-2 gap-2.5">
-          <label class="role-option cursor-pointer">
-            <input type="radio" name="role" value="Giáo viên / Cán bộ" class="hidden" required />
-            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
-              <div class="text-xl mb-1">👩‍🏫</div>
-              <div class="text-xs sm:text-sm font-semibold text-slate-100">Giáo viên</div>
-            </div>
-          </label>
-
-          <label class="role-option cursor-pointer">
-            <input type="radio" name="role" value="Học sinh CGVR" class="hidden" />
-            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
-              <div class="text-xl mb-1">🎓</div>
-              <div class="text-xs sm:text-sm font-semibold text-slate-100">Học sinh</div>
-            </div>
-          </label>
-
-          <label class="role-option cursor-pointer">
-            <input type="radio" name="role" value="Cựu học sinh" class="hidden" />
-            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
-              <div class="text-xl mb-1">🎒</div>
-              <div class="text-xs sm:text-sm font-semibold text-slate-100">Cựu học sinh</div>
-            </div>
-          </label>
-
-          <label class="role-option cursor-pointer">
-            <input type="radio" name="role" value="Khách mời / Phụ huynh" class="hidden" />
-            <div class="p-3 rounded-2xl border border-slate-700 bg-slate-800/60 hover:border-amber-500/50 transition text-center">
-              <div class="text-xl mb-1">✨</div>
-              <div class="text-xs sm:text-sm font-semibold text-slate-100">Khách / Phụ huynh</div>
-            </div>
-          </label>
-        </div>
-      </div>
-
-      <!-- Ô nhập tên (Tự động ẩn nếu chọn Giáo viên) -->
-      <div id="name-input-container" class="transition-all duration-300">
-        <label for="visitor-name" class="block text-xs font-semibold uppercase tracking-wider text-amber-300/90 mb-1.5">
-          2. Họ và tên (hoặc Lớp) *
-        </label>
-        <input
-          type="text"
-          id="visitor-name"
-          required
-          placeholder="VD: Nguyễn Văn A - 12A1..."
-          class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition"
-        />
-      </div>
-
-      <button
-        type="submit"
-        id="submit-btn"
-        class="w-full btn-gold text-slate-950 font-bold py-3.5 rounded-xl text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 mt-2 cursor-pointer"
-      >
-        <span>Mở Kho Ảnh 20/11 Ngay</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  <!-- ================= THANH STUDIO HEADER ================= -->
+  <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-2 flex items-center justify-between z-10">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-300">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
         </svg>
-      </button>
-    </form>
-
-    <div class="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
-      <span>📸 Cameraman: <strong class="text-amber-300">Kim Tuấn An (Kaizen)</strong></span>
-      <span>20/11 CGVR</span>
-    </div>
-  </main>
-
-  <!-- ================= BƯỚC 2: TRANG KHO ẢNH & MÃ QR ỦNG HỘ ================= -->
-  <section id="gallery-portal" class="hidden w-full max-w-4xl space-y-6 z-10">
-    <!-- Header chào mừng cá nhân hóa -->
-    <div class="glass-card rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-medium mb-3">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span id="greeting-badge">Đã xác nhận truy cập</span>
       </div>
-      <h2 class="font-serif-display text-2xl sm:text-4xl font-bold gold-gradient-text">
-        Kỷ Niệm 20/11 — THPT Chê Ghê-va-ra
-      </h2>
-      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-xl mx-auto">
-        Cảm ơn đã ghé thăm! Toàn bộ ảnh gốc sắc nét được thực hiện bởi
-        <span class="text-amber-300 font-semibold">Cameraman: Kim Tuấn An (Kaizen)</span>.
-      </p>
+      <div>
+        <div class="text-[11px] font-semibold tracking-[0.2em] uppercase text-amber-300/90">CGVR • 20.11.2026</div>
+        <div class="text-[11px] text-slate-400">Digital Photo Archive</div>
+      </div>
+    </div>
 
-      <!-- Nút mở kho ảnh nhúng (giấu link Drive khỏi thanh URL) -->
-      <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+    <div class="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[11px] text-slate-300 flex items-center gap-2">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+      <span>Cameraman: <strong class="text-amber-200 font-semibold">Kim Tuấn An (Kaizen)</strong></span>
+    </div>
+  </header>
+
+  <!-- ================= NỘI DUNG CHÍNH ================= -->
+  <div class="flex-1 flex items-center justify-center px-4 py-6 sm:px-6 z-10">
+
+    <!-- BƯỚC 1: CỔNG XÁC NHẬN TRIỂN LÃM -->
+    <main id="welcome-gate" class="w-full max-w-lg luxury-panel rounded-[28px] p-6 sm:p-9 relative animate-fade-up">
+      <!-- 4 góc khung ngắm máy ảnh -->
+      <span class="absolute top-4 left-4 w-3 h-3 border-t border-l border-amber-400/50 rounded-tl-sm"></span>
+      <span class="absolute top-4 right-4 w-3 h-3 border-t border-r border-amber-400/50 rounded-tr-sm"></span>
+      <span class="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-amber-400/50 rounded-bl-sm"></span>
+      <span class="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-amber-400/50 rounded-br-sm"></span>
+
+      <div class="text-center mb-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-300 text-[11px] font-medium tracking-widest uppercase mb-3">
+          <span>Tri Ân Ngày Nhà Giáo Việt Nam</span>
+        </div>
+        <h1 class="font-editorial text-3xl sm:text-4xl font-bold tracking-tight text-champagne leading-tight">
+          THPT Chê Ghê-va-ra
+        </h1>
+        <p class="font-editorial italic text-slate-300 text-base sm:text-lg mt-1">
+          “Lưu giữ từng khoảnh khắc thanh xuân rực rỡ”
+        </p>
+      </div>
+
+      <form id="verify-form" class="space-y-5">
+        <div>
+          <label class="block text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-2.5">
+            Chọn đối tượng truy cập
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <!-- Giáo viên -->
+            <label class="cursor-pointer group">
+              <input type="radio" name="role" value="Giáo viên / Cán bộ" class="role-card-input hidden" required />
+              <div class="role-card-box relative p-3.5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-200 flex items-center gap-3">
+                <div class="role-icon-wrap w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs sm:text-sm font-semibold text-white">Giáo viên</div>
+                  <div class="text-[10px] text-slate-400">Vào xem ngay</div>
+                </div>
+                <span class="check-dot opacity-0 scale-50 transition-all absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+            </label>
+
+            <!-- Học sinh -->
+            <label class="cursor-pointer group">
+              <input type="radio" name="role" value="Học sinh CGVR" class="role-card-input hidden" />
+              <div class="role-card-box relative p-3.5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-200 flex items-center gap-3">
+                <div class="role-icon-wrap w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs sm:text-sm font-semibold text-white">Học sinh</div>
+                  <div class="text-[10px] text-slate-400">Đang theo học</div>
+                </div>
+                <span class="check-dot opacity-0 scale-50 transition-all absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+            </label>
+
+            <!-- Cựu học sinh -->
+            <label class="cursor-pointer group">
+              <input type="radio" name="role" value="Cựu học sinh" class="role-card-input hidden" />
+              <div class="role-card-box relative p-3.5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-200 flex items-center gap-3">
+                <div class="role-icon-wrap w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs sm:text-sm font-semibold text-white">Cựu HS</div>
+                  <div class="text-[10px] text-slate-400">Về thăm trường</div>
+                </div>
+                <span class="check-dot opacity-0 scale-50 transition-all absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+            </label>
+
+            <!-- Khách / Phụ huynh -->
+            <label class="cursor-pointer group">
+              <input type="radio" name="role" value="Khách mời / Phụ huynh" class="role-card-input hidden" />
+              <div class="role-card-box relative p-3.5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-200 flex items-center gap-3">
+                <div class="role-icon-wrap w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs sm:text-sm font-semibold text-white">Khách mời</div>
+                  <div class="text-[10px] text-slate-400">Phụ huynh / Đại biểu</div>
+                </div>
+                <span class="check-dot opacity-0 scale-50 transition-all absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Ô nhập tên (Tự động ẩn nếu chọn Giáo viên) -->
+        <div id="name-input-container" class="transition-all duration-300">
+          <label for="visitor-name" class="block text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-2">
+            Họ và tên (hoặc Lớp)
+          </label>
+          <div class="relative">
+            <input
+              type="text"
+              id="visitor-name"
+              required
+              placeholder="Ví dụ: Nguyễn Văn A - 12A1"
+              class="w-full px-4 py-3.5 rounded-2xl bg-black/50 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400/70 focus:ring-2 focus:ring-amber-400/15 transition"
+            />
+          </div>
+        </div>
+
         <button
-          onclick="openProtectedDrive()"
-          class="w-full sm:w-auto btn-gold text-slate-950 font-bold px-7 py-3.5 rounded-xl text-sm sm:text-base flex items-center justify-center gap-2 cursor-pointer"
+          type="submit"
+          id="submit-btn"
+          class="w-full btn-champagne font-bold py-4 rounded-2xl text-sm sm:text-base tracking-wide flex items-center justify-center gap-2.5 cursor-pointer"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5L7.71 3.5zm1.72 0l6.56 11.5h6.86L16.29 3.5H9.43zm6.28 12.5H2.57l3.43 5h13.14l-3.43-5z"/>
+          <span>Mở Kho Ảnh Kỷ Niệm</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
-          <span>Xem & Tải Ảnh Kỷ Niệm 20/11</span>
+        </button>
+      </form>
+
+      <!-- Thông số EXIF trang trí -->
+      <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-[10px] tracking-widest uppercase text-slate-500 font-mono">
+        <span>RAW • FULL HD ARCHIVE</span>
+        <span>KTA.TEAMS × KAIZEN</span>
+      </div>
+    </main>
+
+    <!-- BƯỚC 2: PHÒNG CHỜ ĐẾM NGƯỢC ỐNG KÍNH 20S & THẺ QR ỦNG HỘ -->
+    <section id="gallery-portal" class="hidden w-full max-w-4xl grid-cols-1 lg:grid-cols-12 gap-6 items-stretch animate-fade-up">
+
+      <!-- Cột trái (7 phần): Vòng đếm ngược 20s & Nút mở khóa Drive -->
+      <div class="lg:col-span-7 luxury-panel rounded-[28px] p-6 sm:p-8 flex flex-col justify-between relative">
+        <span class="absolute top-4 left-4 w-3 h-3 border-t border-l border-amber-400/40"></span>
+        <span class="absolute top-4 right-4 w-3 h-3 border-t border-r border-amber-400/40"></span>
+
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/25 text-emerald-300 text-xs font-medium mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span id="greeting-badge">Đã xác nhận truy cập</span>
+          </div>
+
+          <h2 class="font-editorial text-2xl sm:text-3xl font-bold text-champagne leading-snug">
+            Album Ảnh 20/11 Trường THPT Chê Ghê-va-ra
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
+            Bộ ảnh được chụp bởi <span class="text-slate-200 font-medium">Kim Tuấn An (Kaizen)</span>. Hệ thống đang khởi tạo liên kết tải ảnh chất lượng gốc.
+          </p>
+        </div>
+
+        <!-- Vòng tròn đếm ngược phong cách ống kính máy ảnh -->
+        <div class="my-7 flex flex-col items-center justify-center">
+          <div class="relative w-32 h-32 flex items-center justify-center">
+            <!-- Vòng ngoài trang trí -->
+            <div class="absolute inset-0 rounded-full border border-dashed border-amber-400/25 animate-[spin_25s_linear_infinite]"></div>
+            <svg class="w-28 h-28 -rotate-90 transform" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,0.08)" stroke-width="5" fill="none" />
+              <circle
+                id="countdown-ring"
+                cx="50"
+                cy="50"
+                r="42"
+                stroke="#facc15"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="none"
+                stroke-dasharray="263.89"
+                stroke-dashoffset="0"
+                class="transition-all duration-1000 ease-linear"
+              />
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <span id="countdown-number" class="text-3xl font-bold text-white tabular-nums">20</span>
+              <span id="countdown-unit" class="text-[10px] uppercase tracking-widest text-amber-300/80">giây</span>
+            </div>
+          </div>
+          <p id="countdown-hint" class="text-xs text-slate-400 mt-3 text-center">
+            Đang mở khóa thư mục lưu trữ ảnh gốc...
+          </p>
+        </div>
+
+        <!-- Nút mở khóa Drive -->
+        <button
+          id="drive-redirect-btn"
+          disabled
+          onclick="goToDrive()"
+          class="w-full py-4 px-6 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 bg-white/[0.04] text-slate-500 border border-white/10 cursor-not-allowed transition-all duration-300"
+        >
+          <svg id="lock-icon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+          </svg>
+          <span id="btn-text">Vui lòng chờ 20s để mở nút</span>
         </button>
       </div>
 
-      <!-- Khung nhúng Drive trực tiếp -->
-      <div id="embedded-drive-box" class="hidden mt-6 rounded-2xl overflow-hidden border border-amber-400/30 bg-slate-900">
-        <div class="bg-slate-800/90 px-4 py-2.5 flex items-center justify-between text-xs text-slate-300 border-b border-slate-700">
-          <span>📁 Thư mục ảnh gốc 20/11 CGVR (Chế độ bảo vệ liên kết)</span>
-          <button onclick="closeEmbeddedDrive()" class="text-amber-400 hover:underline cursor-pointer">Thu gọn</button>
+      <!-- Cột phải (5 phần): Thẻ QR MB Bank phong cách Titan Ánh Kim -->
+      <div class="lg:col-span-5 luxury-panel rounded-[28px] p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-44 h-44 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="text-center">
+          <span class="inline-block px-3 py-1 rounded-full text-[10px] font-semibold tracking-widest uppercase bg-amber-400/10 text-amber-300 border border-amber-400/25">
+            ☕ Tiếp Lửa Đam Mê
+          </span>
+          <h3 class="font-editorial text-xl font-bold text-white mt-2.5">
+            Ủng Hộ Cameraman
+          </h3>
+          <p class="text-slate-400 text-xs mt-1 leading-relaxed">
+            Ảnh được chụp miễn phí. Bạn có thể quét mã QR bên dưới để ủng hộ tùy tâm nhé!
+          </p>
         </div>
-        <iframe id="drive-iframe" src="" class="w-full h-[540px] border-0 bg-white"></iframe>
-      </div>
-    </div>
 
-    <!-- Thẻ Ủng hộ Cameraman (VietQR MB Bank không để sẵn tiền) -->
-    <div class="glass-card rounded-3xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-      <div class="md:col-span-7 space-y-3 text-center md:text-left">
-        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-400/30">
-          ☕ Tiếp Lửa Đam Mê Nhiếp Ảnh
-        </span>
-        <h3 class="font-serif-display text-xl sm:text-2xl font-bold text-white">
-          Ủng Hộ Cameraman Kim Tuấn An (Kaizen)
-        </h3>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          Toàn bộ ảnh 20/11 tại trường đều được chụp và chỉnh sửa hoàn toàn miễn phí. Nếu yêu thích những bức ảnh này, mọi người có thể quét mã QR bên cạnh để gửi một chút ủng hộ tùy tâm nhé!
-        </p>
+        <!-- Khung QR có hiệu ứng tia quét -->
+        <div class="my-5 flex flex-col items-center">
+          <div class="relative bg-white p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] max-w-[205px] w-full overflow-hidden">
+            <div class="qr-laser absolute left-2 right-2 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent z-10 pointer-events-none"></div>
+            <img
+              src="https://img.vietqr.io/image/MB-864810012222-compact2.png?addInfo=UNG%20HO%20CHUP%20ANH%202011CGVR&accountName=KIM%20TUAN%20AN"
+              alt="QR MB Bank Ủng hộ chụp ảnh 20/11 CGVR"
+              class="w-full h-auto rounded-lg pointer-events-none"
+            />
+          </div>
+          <span class="text-[10px] text-slate-500 mt-2">MB Bank • Số tiền tùy tâm</span>
+        </div>
 
-        <div class="bg-slate-900/75 border border-slate-700/80 rounded-2xl p-4 space-y-2 text-xs sm:text-sm">
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Ngân hàng:</span>
-            <span class="font-semibold text-white">MB Bank (Quân Đội)</span>
+        <!-- Chi tiết tài khoản & nút copy nhanh -->
+        <div class="bg-black/40 border border-white/[0.07] rounded-2xl p-3.5 space-y-2 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400">Chủ TK:</span>
+            <span class="font-semibold text-amber-200">KIM TUAN AN (MB Bank)</span>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Chủ tài khoản:</span>
-            <span class="font-semibold text-amber-300">KIM TUAN AN</span>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400">STK:</span>
+            <button onclick="copyText('864810012222', 'Số tài khoản MB Bank')" class="flex items-center gap-1.5 font-mono font-bold text-white hover:text-amber-300 transition cursor-pointer">
+              <span>864810012222</span>
+              <span class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] font-sans font-normal text-amber-300">Copy</span>
+            </button>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Số tài khoản:</span>
-            <div class="flex items-center gap-2">
-              <span class="font-mono font-bold text-white">864810012222</span>
-              <button onclick="copySTK()" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-xs hover:bg-amber-500/30 transition cursor-pointer">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="flex justify-between items-center pt-1 border-t border-slate-800">
-            <span class="text-slate-400">Nội dung CK:</span>
-            <span class="font-mono font-semibold text-emerald-300">ủng hộ chup ảnh 20/11CGVR</span>
+          <div class="flex items-center justify-between pt-1.5 border-t border-white/[0.06]">
+            <span class="text-slate-400">Nội dung:</span>
+            <button onclick="copyText('ủng hộ chup ảnh 20/11CGVR', 'Nội dung chuyển khoản')" class="flex items-center gap-1.5 font-mono text-[11px] text-emerald-300 hover:text-emerald-200 transition cursor-pointer">
+              <span>ủng hộ chup ảnh 20/11CGVR</span>
+              <span class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] font-sans text-slate-300">Copy</span>
+            </button>
           </div>
         </div>
       </div>
+    </section>
+  </div>
 
-      <!-- Mã QR MB Bank tự động điền nội dung, để trống số tiền -->
-      <div class="md:col-span-5 flex flex-col items-center justify-center">
-        <div class="bg-white p-3.5 rounded-2xl shadow-2xl animate-float max-w-[240px] w-full">
-          <img
-            src="https://img.vietqr.io/image/MB-864810012222-compact2.png?addInfo=UNG%20HO%20CHUP%20ANH%202011CGVR&accountName=KIM%20TUAN%20AN"
-            alt="QR MB Bank Ủng hộ chụp ảnh 20/11 CGVR"
-            class="w-full h-auto rounded-lg pointer-events-none"
-          />
-        </div>
-        <p class="text-[11px] text-slate-400 mt-2.5 text-center">
-          *Quét bằng App Ngân hàng hoặc MoMo (Số tiền tùy tâm)
-        </p>
-      </div>
-    </div>
-
-    <footer class="text-center text-xs text-slate-500 pb-4">
-      © 2026 THPT Chê Ghê-va-ra • Cameraman: <span class="text-slate-300 font-medium">Kim Tuấn An (Kaizen)</span>
-    </footer>
-  </section>
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full text-center py-4 text-[11px] text-slate-500 z-10">
+    © 2026 KTA.TEAMS - Tra Vinh University • Thiết kế & Nhiếp ảnh bởi <span class="text-slate-300 font-medium">Kim Tuấn An (Kaizen)</span>
+  </footer>
 
   <!-- Toast thông báo -->
-  <div id="toast" class="fixed bottom-5 right-5 bg-slate-800 border border-amber-400/50 text-white px-4 py-3 rounded-xl shadow-2xl text-xs sm:text-sm transform translate-y-20 opacity-0 transition-all duration-300 z-50"></div>
+  <div id="toast" class="fixed bottom-5 right-5 bg-zinc-900/95 backdrop-blur-md border border-amber-400/40 text-white px-4 py-3 rounded-2xl shadow-2xl text-xs sm:text-sm transform translate-y-24 opacity-0 transition-all duration-300 z-50"></div>
 
   <script>
-    // ================= CẤU HÌNH CỦA BẠN =================
-    const DRIVE_FOLDER_ID = "1pAe3ncsCNTBfmm5uJTyVxrTXI-LP_hbz";
-
-    // Dán link Web App Google Apps Script vào đây để nhận mail mỗi đủ 20 lượt truy cập
+    // ================= DÁN LINK WEB APP APPS SCRIPT ĐỂ NHẬN MAIL MỖI 20 LƯỢT =================
     const GOOGLE_SCRIPT_URL = "";
-    // ====================================================
+    // ========================================================================================
 
     const welcomeGate = document.getElementById("welcome-gate");
     const galleryPortal = document.getElementById("gallery-portal");
@@ -266,16 +445,18 @@
     const visitorNameInput = document.getElementById("visitor-name");
     const roleRadios = document.querySelectorAll('input[name="role"]');
 
+    let isUnlocked = false;
+
     function showToast(msg) {
       const toast = document.getElementById("toast");
       toast.textContent = msg;
-      toast.classList.remove("translate-y-20", "opacity-0");
+      toast.classList.remove("translate-y-24", "opacity-0");
       setTimeout(() => {
-        toast.classList.add("translate-y-20", "opacity-0");
-      }, 3200);
+        toast.classList.add("translate-y-24", "opacity-0");
+      }, 3000);
     }
 
-    // Ẩn/hiện ô nhập tên tùy theo vai trò (Giáo viên thì ẩn, các đối tượng khác bắt buộc nhập)
+    // Tự động ẩn ô nhập tên khi chọn Giáo viên
     roleRadios.forEach((radio) => {
       radio.addEventListener("change", function () {
         if (this.value === "Giáo viên / Cán bộ") {
@@ -289,12 +470,12 @@
       });
     });
 
-    // Xử lý form chào mừng & gửi thống kê về Apps Script
+    // Xử lý xác nhận & chuyển sang màn hình đếm ngược
     verifyForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const roleEl = document.querySelector('input[name="role"]:checked');
       if (!roleEl) {
-        showToast("⚠️ Vui lòng chọn vai trò của bạn!");
+        showToast("⚠️ Vui lòng chọn đối tượng truy cập!");
         return;
       }
 
@@ -307,11 +488,7 @@
         return;
       }
 
-      const btn = document.getElementById("submit-btn");
-      btn.disabled = true;
-      btn.innerHTML = `<span>Đang mở khóa kho ảnh...</span>`;
-
-      // Gửi dữ liệu truy cập ngầm về Google Apps Script (đủ 20 lượt tự gửi mail)
+      // Gửi dữ liệu về Google Apps Script (đủ 20 lượt gửi mail về kimtuananmc2021@gmail.com)
       if (GOOGLE_SCRIPT_URL) {
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
@@ -325,36 +502,79 @@
         }).catch(() => {});
       }
 
-      setTimeout(() => {
-        greetingBadge.textContent = isTeacher
-          ? "Kính chào Quý Thầy/Cô THPT Chê Ghê-va-ra"
-          : `Xin chào ${roleVal}: ${nameVal}`;
-        welcomeGate.classList.add("hidden");
-        galleryPortal.classList.remove("hidden");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 450);
+      greetingBadge.textContent = isTeacher
+        ? "Kính chào Quý Thầy/Cô THPT Chê Ghê-va-ra"
+        : `Xin chào ${roleVal}: ${nameVal}`;
+
+      welcomeGate.classList.add("hidden");
+      galleryPortal.classList.remove("hidden");
+      galleryPortal.classList.add("grid");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      startCountdown(20);
     });
 
-    // Mở kho ảnh Drive nhúng trực tiếp (ẩn URL gốc trên thanh địa chỉ)
-    function openProtectedDrive() {
-      const box = document.getElementById("embedded-drive-box");
-      const iframe = document.getElementById("drive-iframe");
-      iframe.src = `https://drive.google.com/embeddedfolderview?id=${DRIVE_FOLDER_ID}#grid`;
-      box.classList.remove("hidden");
-      box.scrollIntoView({ behavior: "smooth" });
+    // Vòng tròn SVG đếm ngược 20s
+    function startCountdown(totalSeconds) {
+      let remaining = totalSeconds;
+      const circumference = 2 * Math.PI * 42; // r = 42 => ~263.89
+      const ring = document.getElementById("countdown-ring");
+      const numEl = document.getElementById("countdown-number");
+      const unitEl = document.getElementById("countdown-unit");
+      const hintEl = document.getElementById("countdown-hint");
+      const btn = document.getElementById("drive-redirect-btn");
+      const btnText = document.getElementById("btn-text");
+      const lockIcon = document.getElementById("lock-icon");
+
+      const timer = setInterval(() => {
+        remaining--;
+        const offset = circumference * (1 - remaining / totalSeconds);
+        ring.style.strokeDashoffset = offset;
+
+        if (remaining > 0) {
+          numEl.textContent = remaining;
+          btnText.textContent = `Vui lòng chờ ${remaining}s để mở nút`;
+        } else {
+          clearInterval(timer);
+          isUnlocked = true;
+
+          ring.style.stroke = "#34d399";
+          numEl.textContent = "✓";
+          numEl.classList.add("text-emerald-400");
+          unitEl.textContent = "sẵn sàng";
+          unitEl.classList.replace("text-amber-300/80", "text-emerald-300");
+
+          hintEl.textContent = "Liên kết đã mở khóa! Bấm nút bên dưới để truy cập kho ảnh.";
+          hintEl.classList.replace("text-slate-400", "text-emerald-300");
+
+          btn.disabled = false;
+          btn.className =
+            "w-full py-4 px-6 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 btn-champagne cursor-pointer";
+          lockIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />`;
+          btnText.textContent = "Mở Kho Ảnh Google Drive Ngay";
+        }
+      }, 1000);
     }
 
-    function closeEmbeddedDrive() {
-      document.getElementById("embedded-drive-box").classList.add("hidden");
-      document.getElementById("drive-iframe").src = "";
+    // Chuyển hướng sang Drive sau khi hết 20s
+    function goToDrive() {
+      if (!isUnlocked) return;
+      const parts = [
+        "https://",
+        "drive.google.com",
+        "/drive/folders/",
+        "1pAe3ncsCNTBfmm5uJTyVxrTXI-LP_hbz",
+        "?usp=sharing"
+      ];
+      window.location.href = parts.join("");
     }
 
-    function copySTK() {
-      navigator.clipboard.writeText("864810012222");
-      showToast("✅ Đã sao chép STK MB Bank: 864810012222");
+    function copyText(text, label) {
+      navigator.clipboard.writeText(text);
+      showToast(`✅ Đã sao chép ${label}: ${text}`);
     }
 
-    // Chặn chuột phải và các phím tắt xem mã nguồn cơ bản
+    // Khóa chuột phải & phím tắt xem mã nguồn cơ bản
     document.addEventListener("contextmenu", (e) => e.preventDefault());
     document.addEventListener("keydown", (e) => {
       if (
@@ -363,7 +583,7 @@
         (e.ctrlKey && ["U", "S"].includes(e.key.toUpperCase()))
       ) {
         e.preventDefault();
-        showToast("🔒 Chức năng này đã được khóa để bảo vệ bản quyền ảnh!");
+        showToast("🔒 Chức năng này đã được khóa!");
       }
     });
   </script>
