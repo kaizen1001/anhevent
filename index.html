@@ -166,7 +166,7 @@
         <span class="text-amber-300 font-semibold">Cameraman: Kim Tuấn An (Kaizen)</span>.
       </p>
 
-      <!-- Khu vực nút mở Drive & Trình xem nhúng (chống lộ link thanh địa chỉ) -->
+      <!-- Nút mở kho ảnh nhúng (giấu link Drive khỏi thanh URL) -->
       <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
         <button
           onclick="openProtectedDrive()"
@@ -175,17 +175,17 @@
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5L7.71 3.5zm1.72 0l6.56 11.5h6.86L16.29 3.5H9.43zm6.28 12.5H2.57l3.43 5h13.14l-3.43-5z"/>
           </svg>
-          <span>Xem & Tải Ảnh Trên Google Drive</span>
+          <span>Xem & Tải Ảnh Kỷ Niệm 20/11</span>
         </button>
       </div>
 
-      <!-- Khung nhúng Drive trực tiếp (giấu thanh URL gốc của Google Drive) -->
+      <!-- Khung nhúng Drive trực tiếp -->
       <div id="embedded-drive-box" class="hidden mt-6 rounded-2xl overflow-hidden border border-amber-400/30 bg-slate-900">
         <div class="bg-slate-800/90 px-4 py-2.5 flex items-center justify-between text-xs text-slate-300 border-b border-slate-700">
           <span>📁 Thư mục ảnh gốc 20/11 CGVR (Chế độ bảo vệ liên kết)</span>
           <button onclick="closeEmbeddedDrive()" class="text-amber-400 hover:underline cursor-pointer">Thu gọn</button>
         </div>
-        <iframe id="drive-iframe" src="" class="w-full h-[480px] border-0 bg-white"></iframe>
+        <iframe id="drive-iframe" src="" class="w-full h-[540px] border-0 bg-white"></iframe>
       </div>
     </div>
 
@@ -252,11 +252,9 @@
 
   <script>
     // ================= CẤU HÌNH CỦA BẠN =================
-    // 1. Dán ID thư mục Google Drive vào đây (VD: nếu link là https://drive.google.com/drive/folders/1AbCdEfGhIjK... thì ID là 1AbCdEfGhIjK...)
-    // Để trống "" nếu bạn chưa up ảnh xong.
-    const DRIVE_FOLDER_ID = "1pAe3ncsCNTBfmm5uJTyVxrTXI-LP_hbz?usp=sharing";
+    const DRIVE_FOLDER_ID = "1pAe3ncsCNTBfmm5uJTyVxrTXI-LP_hbz";
 
-    // 2. Dán link Web App Google Apps Script vào đây để nhận mail mỗi đủ 20 lượt truy cập
+    // Dán link Web App Google Apps Script vào đây để nhận mail mỗi đủ 20 lượt truy cập
     const GOOGLE_SCRIPT_URL = "";
     // ====================================================
 
@@ -337,15 +335,11 @@
       }, 450);
     });
 
-    // Mở kho ảnh Drive (Ưu tiên nhúng trực tiếp để giấu link trên thanh địa chỉ)
+    // Mở kho ảnh Drive nhúng trực tiếp (ẩn URL gốc trên thanh địa chỉ)
     function openProtectedDrive() {
-      if (!DRIVE_FOLDER_ID || DRIVE_FOLDER_ID.trim() === "") {
-        showToast("📸 Album ảnh 20/11 đang được Kim Tuấn An (Kaizen) cập nhật, quay lại sau nhé!");
-        return;
-      }
       const box = document.getElementById("embedded-drive-box");
       const iframe = document.getElementById("drive-iframe");
-      iframe.src = `https://drive.google.com/embeddedfolderview?id=${DRIVE_FOLDER_ID.trim()}#grid`;
+      iframe.src = `https://drive.google.com/embeddedfolderview?id=${DRIVE_FOLDER_ID}#grid`;
       box.classList.remove("hidden");
       box.scrollIntoView({ behavior: "smooth" });
     }
